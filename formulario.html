@@ -8,6 +8,7 @@
         <h1>Formulario de registro</h1>
         <form>
         <div class="formulario">
+            <h2>Información Personal</h2>
             <label for ="Nombre">Nombre: </label>
             <input type="text" id="Nombre" name="Nombre" required><br><br>
 
@@ -25,8 +26,50 @@
             <input type = "radio" id = "masculino" name="género" value="masculino"><br>
 
             <label for = "femenino">Femenino</label>
-            <input type = "radio" id = "femenino" name ="género" value ="femenino">
-        </div> 
+            <input type = "radio" id = "femenino" name ="género" value ="femenino"><br><br>
+        </div>
+        
+        <div class="Evento">
+            <h2>Información del evento</h2>
+            <label for = "Fecha del Evento">Fecha del Evento:</label>
+            <input type = "date" id="fecha del evento" name="fecha_evento"><br><br>
+
+            <label for ="Tipo de Entrada">Tipo de Entrada:</label>
+            <select id = "tipo de entrada" name="tipo de entrada">
+                <option value ="general">General</option>
+                <option value ="VIP">VIP</option>
+                <option value ="Estudiante">Estudiante</option>
+            </select>
+            <br><br>
+            <label for ="Preferencia en la comida">Preferencia en la comida:</label><br>
+            <input type = "checkbox" id ="vegetariano" name ="preferencia comida" value="vegetariano">
+            <label for = "vegetariano">Vegetariano</label>
+
+            <input type = "checkbox" id ="vegano" name ="preferencia comida" value="vegano">
+            <label for ="vegano">Vegano</label>
+
+            <input type = "checkbox" id="sin gluten" name ="preferencia comida" value ="sin gluten">
+            <label for="sin gluten">Sin gluten</label>
+
+            <input type ="checkbox" id="sin preferencias" name="preferencia comida" value="sin preferencias">
+            <label for="sin preferencias">Sin preferencias</label>
+        </div>
+
+        <div class = "Acceso">
+            <h2>Información de Acceso</h2>
+            <label for ="Nombre de Usuario">Nombre de Usuario:</label>
+            <input type ="text" id ="nombre_usuario" name ="nombre_usuario">
+            <br><br>
+
+            <label for ="Contraseña">Contraseña:</label>
+            <input type = "password" id="contraseña" name ="contraseña" required>
+            <br><br>
+            <label for ="confirmar contraseña">Confirmar contraseña:</label>
+            <input type ="password" 
+
+
+        </div>
+        <button type="submit" class="envio de datos">Enviar</button>
         </form>
     </body>
 </html>
