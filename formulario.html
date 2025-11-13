@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang ="es">
+    <head>
+        <meta charset ="UTF-8">
+        <title>Formulario de registro</title>
+    </head>
+    <body>
+        <h1>Formulario de registro</h1>
+        <form>
+        <div class="formulario">
+            <label for ="Nombre">Nombre: </label>
+            <input type="text" id="Nombre" name="Nombre" required><br><br>
+
+            <label for = "Correo">Correo Electrónico:</label> 
+            <input type = "email" id="correo" name ="correo"><br><br>
+
+            <label for = "Teléfono">Número de Teléfono:</label><br>
+            <input type = "tel" id = "teléfono" name = "teléfono"><br><br>
+
+            <label for = "Fecha de Nacimiento">Fecha de Nacimiento:</label><br>
+            <input type = "date" id="fecha de nacimiento" name = "fecha de nacimiento"><br><br>
+        
+            <label for = "Género">Género</label><br>
+            <label for = "masculino">Masculino</label>
+            <input type = "radio" id = "masculino" name="género" value="masculino"><br>
+
+            <label for = "femenino">Femenino</label>
+            <input type = "radio" id = "femenino" name ="género" value ="femenino">
+        </div> 
+        </form>
+    </body>
+</html>
+
+<!--Objetivo: Crear un formulario en HTML usando distintos tipos de campos de entrada para
+simular el registro de asistentes a un evento. Este formulario permitirá a los estudiantes
+practicar con diferentes elementos HTML y enviará los datos usando el método POST.
+Enunciado:
+Crea un formulario en HTML para una aplicación de registro de asistentes a un evento. Tu
+formulario debe incluir una variedad de campos para capturar toda la información necesaria
+de los participantes. Utiliza Bootstrap para estilizar el formulario y hacerlo visualmente
+atractivo. Debes incluir todos los siguientes campos y organizarlos en secciones claras.
+Campos del Formulario
+1. Información Personal:
+○ Nombre completo: campo de texto. 
+○ Correo electrónico: campo de tipo email.
+○ Número de teléfono: campo de tipo tel.
+○ Fecha de nacimiento: campo de tipo date.
+○ Género: opciones de tipo radio con las opciones "Masculino" y "Femenino".
+2. Información del Evento:
+○ Fecha del evento: campo de tipo date.
+○ Tipo de entrada: menú desplegable (select) con opciones como "General",
+"VIP", y "Estudiante".
+○ Preferencias de comida: casillas de verificación (checkbox) con opciones
+como "Vegetariano", "Vegano", "Sin gluten", "Sin preferencias".
+
+3. Información de Acceso:
+○ Nombre de usuario: campo de texto.
+○ Contraseña: campo de tipo password.
+○ Confirmación de contraseña: campo de tipo password.
+4. Preferencias de Contacto:
+○ ¿Desea recibir notificaciones por correo electrónico?: campo de tipo
+checkbox.
+○ ¿Acepta los términos y condiciones?: campo de tipo checkbox (esto es
+obligatorio para enviar el formulario).
+
+5. Encuesta Adicional:
+○ Calificación de eventos anteriores: deslizador (range) de 1 a 10.
+○ Comentarios adicionales: área de texto (textarea) para comentarios de varias
+líneas.
+
+6. Adjuntar un archivo (Campo tipo file)
+Instrucciones:
+1. Estructura del Formulario: Utiliza la etiqueta <form> con el método POST y un
+action que simule el envío de los datos a un servidor, como "procesar_evento.php".
+
+2. Estilización con Bootstrap: Asegúrate de agregar los estilos de Bootstrap y utilizar
+clases de Bootstrap (form-group, form-control, btn btn-primary, etc.) para organizar y
+mejorar la presentación del formulario.
+3. Validación Básica con Bootstrap:
+○ Utiliza el atributo required en los campos necesarios (como correo
+electrónico, contraseña, y confirmación de contraseña) para asegurarte de
+que no estén vacíos al enviar el formulario.
+○ Bootstrap ofrece clases de validación (is-invalid, invalid-feedback, etc.) que
+puedes usar para que los campos obligatorios muestren un estilo visual
+distintivo si no se completan correctamente.
+○ Los campos de tipo date deben tener la validación required.
+○ Añade validación para que los términos y condiciones sean obligatorios antes
+de enviar el formulario.
+
+4. El archivo procesar_evento.php deberá acceder a todos los campos enviados por el
+formulario y renderizarlos con “echo” en la página, aplicando también estilos de la
+bootstrap a modo de recibo. También se deberán validar los datos recibidos en el
+servidor.
+--->
