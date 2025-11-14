@@ -8,6 +8,7 @@
         <h1>Formulario de registro</h1>
         <form>
         <div class="formulario">
+        <div class ="Personal">
             <h2>Información Personal</h2>
             <label for ="Nombre">Nombre: </label>
             <input type="text" id="Nombre" name="Nombre" required><br><br>
@@ -41,6 +42,7 @@
                 <option value ="Estudiante">Estudiante</option>
             </select>
             <br><br>
+
             <label for ="Preferencia en la comida">Preferencia en la comida:</label><br>
             <input type = "checkbox" id ="vegetariano" name ="preferencia comida" value="vegetariano">
             <label for = "vegetariano">Vegetariano</label>
@@ -65,8 +67,33 @@
             <input type = "password" id="contraseña" name ="contraseña" required>
             <br><br>
             <label for ="confirmar contraseña">Confirmar contraseña:</label>
-            <input type ="password" 
+            <input type ="password">
+        </div>
 
+        <div class = "Contacto">
+            <h2>Preferencia de Contacto</h2>
+            <div class="form-check">
+                <input class ="form-check-input" type="checkbox" id ="notificaciones" name="notificaciones" value ="si">
+                <label class="form-check-label" for="notificaciones">¿Desea recibir notificaciones por correo electrónico?</label>
+
+                <br><input class="form-check-input" type="checkbox" id="terminos" name="terminos" value="aceptar" required>
+                <label class ="form-check-label" for="terminos">¿Acepta los términos y condiciones?</label>
+            </div>
+        </div>
+        <div class ="Adicional">
+            <h2>Encuesta Adicional</h2>
+            <label for ="Calificación de eventos anteriores">Calificación de eventos anteriores:</label><br>
+            <input type="range" id="calificacion_eventos" name="calificacion_eventos" min="1" max="10">
+            <br><br>
+
+            <label for ="Comentarios adicionales">Comentarios adicionales:</label>
+            <textarea id="comentarios_adicionales" name="comentarios_adicionales" rows="4" cols="50"></textarea>
+        </div>
+        </div>
+
+        <div class="Archivo">
+            <h2>Adjunción de archivos</h2>
+            <input type="file" id="archivo" name="archivo">
 
         </div>
         <button type="submit" class="envio de datos">Enviar</button>
