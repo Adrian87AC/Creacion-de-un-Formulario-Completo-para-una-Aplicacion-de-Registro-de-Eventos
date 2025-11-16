@@ -1,170 +1,297 @@
+<!-- DOCTYPE: Define que este es un documento HTML5 -->
 <!DOCTYPE html>
+<!-- Etiqueta <html>: Contenedor raíz. lang="es" indica idioma español -->
 <html lang ="es">
+    <!-- HEAD: Contiene metadatos y referencias a recursos -->
     <head>
+        <!-- Codificación de caracteres UTF-8: Permite acentos y caracteres especiales -->
         <meta charset ="UTF-8">
+        <!-- Viewport: Hace la página responsiva en móviles (escala correcta) -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Título de la página (aparece en la pestaña del navegador) -->
         <title>Formulario de registro</title>
-        <!-- Bootstrap CSS -->
+        <!-- Carga Bootstrap 5.3.2 desde CDN (red de distribución).
+             Bootstrap proporciona clases CSS para estilizar formularios sin CSS custom -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
+    <!-- BODY: Contenido visible de la página -->
+    <!-- BODY: Contenido visible de la página -->
     <body>
+        <!-- Container: Contenedor de Bootstrap que centra el contenido y añade márgenes
+             py-4 = padding vertical de 4 unidades Bootstrap (espaciado arriba/abajo) -->
         <div class="container py-4">
+            <!-- Título principal -->
             <h1 class="mb-4">Formulario de registro</h1>
+            <!-- ETIQUETA FORM: Envía datos al servidor cuando se hace click en "Enviar"
+                 - id="registroForm": Identificador único para referenciar en CSS/JS
+                 - class="needs-validation": Bootstrap usa esto para aplicar validación visual
+                 - novalidate: Deshabilita validación nativa del navegador (usamos custom validation)
+                 - method="post": Método HTTP POST (más seguro que GET para contraseñas/datos sensibles)
+                 - action="procesar_evento.php": Archivo PHP que recibe y procesa los datos
+                 - enctype="multipart/form-data": Necesario para subir archivos (input type="file") -->
             <form id="registroForm" class="needs-validation" novalidate method="post" action="procesar_evento.php" enctype="multipart/form-data">
         <div class="formulario">
+        <!-- SECCIÓN 1: INFORMACIÓN PERSONAL -->
         <div class ="Personal">
             <h2>Información Personal</h2>
+            <!-- Campo de texto para NOMBRE -->
             <div class="mb-3">
+                <!-- mb-3 = margin-bottom de 3 unidades Bootstrap (espaciado entre campos) -->
+                <!-- form-label = estilo Bootstrap para etiquetas -->
                 <label for ="Nombre" class="form-label">Nombre:</label>
+                <!-- type="text": Campo de texto simple
+                     name="nombre": Nombre de la variable en PHP ($_POST['nombre'])
+                     class="form-control": Estilo Bootstrap (borde, padding, fuente)
+                     required: Campo obligatorio (navegador + nuestro JS validarán esto) -->
                 <input type="text" id="Nombre" name="nombre" class="form-control" required>
+                <!-- invalid-feedback: Mensaje de error que aparece si validación falla (Bootstrap lo muestra automático) -->
                 <div class="invalid-feedback">Por favor, ingresa tu nombre.</div>
             </div>
 
+            <!-- Campo de EMAIL -->
             <div class="mb-3">
                 <label for = "Correo" class="form-label">Correo Electrónico:</label>
+                <!-- type="email": El navegador valida que sea formato correo válido
+                     required: Campo obligatorio -->
                 <input type = "email" id="correo" name ="correo" class="form-control" required>
                 <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
             </div>
 
+            <!-- Campo de TELÉFONO (opcional) -->
             <div class="mb-3">
                 <label for = "Teléfono" class="form-label">Número de Teléfono:</label>
+                <!-- type="tel": Tipo teléfono (en móviles abre teclado de números)
+                     NO tiene required: Es opcional -->
                 <input type = "tel" id = "telefono" name = "telefono" class="form-control">
             </div>
 
+            <!-- Campo de FECHA DE NACIMIENTO -->
             <div class="mb-3">
                 <label for = "Fecha de Nacimiento" class="form-label">Fecha de Nacimiento:</label>
+                <!-- type="date": Abre calendario interactivo en navegadores modernos
+                     required: Campo obligatorio -->
                 <input type = "date" id="fecha_nacimiento" name = "fecha_nacimiento" class="form-control" required>
                 <div class="invalid-feedback">La fecha de nacimiento es obligatoria.</div>
             </div>
         
+            <!-- Etiqueta para grupo de RADIO BUTTONS (Género) -->
             <label for = "Género" class="form-label">Género</label>
             <div class="mb-3">
+                <!-- form-check = contenedor Bootstrap para radio/checkbox
+                     form-check-inline = muestra opciones en línea (lado a lado, no uno debajo del otro) -->
                 <div class="form-check form-check-inline">
+                    <!-- type="radio": Solo se puede seleccionar UNA opción (mismo name)
+                         name="genero": Todas tienen el MISMO name para que sean exclusivas
+                         value="masculino": Lo que se envía en $_POST['genero']
+                         class="form-check-input": Estilo Bootstrap para radio
+                         required: Es obligatorio seleccionar una opción -->
                     <input type = "radio" id = "masculino" name="genero" value="masculino" class="form-check-input" required>
+                    <!-- form-check-label: Etiqueta asociada al radio -->
                     <label class="form-check-label" for="masculino">Masculino</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input type = "radio" id = "femenino" name ="genero" value ="femenino" class="form-check-input" required>
                     <label class="form-check-label" for="femenino">Femenino</label>
                 </div>
+                <!-- d-block = display:block para que el mensaje de error aparezca en línea nueva -->
                 <div class="invalid-feedback d-block">Selecciona una opción de género.</div>
             </div>
         </div>
         
+        <!-- SECCIÓN 2: INFORMACIÓN DEL EVENTO -->
         <div class="Evento">
             <h2>Información del evento</h2>
+            <!-- Campo de FECHA DEL EVENTO -->
             <div class="mb-3">
                 <label for = "Fecha del Evento" class="form-label">Fecha del Evento:</label>
+                <!-- type="date": Calendario interactivo
+                     required: Campo obligatorio -->
                 <input type = "date" id="fecha_evento" name="fecha_evento" class="form-control" required>
                 <div class="invalid-feedback">La fecha del evento es obligatoria.</div>
             </div>
 
+            <!-- Campo de TIPO DE ENTRADA (Menú desplegable) -->
             <div class="mb-3">
                 <label for ="Tipo de Entrada" class="form-label">Tipo de Entrada:</label>
+                <!-- <select>: Crea un menú desplegable
+                     name="tipo_entrada": Nombre para $_POST['tipo_entrada']
+                     class="form-select": Estilo Bootstrap para select -->
                 <select id = "tipo_entrada" name="tipo_entrada" class="form-select">
-                <option value ="general">General</option>
-                <option value ="VIP">VIP</option>
-                <option value ="Estudiante">Estudiante</option>
-            </select>
+                    <!-- <option>: Cada opción del menú
+                         value="general": Lo que se envía si se selecciona esta opción -->
+                    <option value ="general">General</option>
+                    <option value ="VIP">VIP</option>
+                    <option value ="Estudiante">Estudiante</option>
+                </select>
             </div>
-            <br><br>
 
+            <!-- Campo de PREFERENCIA DE COMIDA (Checkboxes) -->
             <label for ="Preferencia en la comida" class="form-label">Preferencia en la comida:</label>
             <div class="mb-3">
-            <input type = "checkbox" id ="vegetariano" name ="preferencia_comida[]" value="vegetariano" class="form-check-input">
-            <label for = "vegetariano">Vegetariano</label>
+                <!-- Cada checkbox tiene el MISMO name pero diferente value
+                     name="preferencia_comida[]": Los CORCHETES [] indican que es un array
+                     Esto permite enviar MÚLTIPLES valores en $_POST['preferencia_comida']
+                     Por ejemplo: $_POST['preferencia_comida'] = ['vegetariano', 'sin_gluten'] -->
+                <input type = "checkbox" id ="vegetariano" name ="preferencia_comida[]" value="vegetariano" class="form-check-input">
+                <label for = "vegetariano">Vegetariano</label>
 
-            <input type = "checkbox" id ="vegano" name ="preferencia_comida[]" value="vegano" class="form-check-input">
-            <label for ="vegano">Vegano</label>
+                <input type = "checkbox" id ="vegano" name ="preferencia_comida[]" value="vegano" class="form-check-input">
+                <label for ="vegano">Vegano</label>
 
-            <input type = "checkbox" id="sin_gluten" name ="preferencia_comida[]" value ="sin_gluten" class="form-check-input">
-            <label for="sin gluten">Sin gluten</label>
+                <input type = "checkbox" id="sin_gluten" name ="preferencia_comida[]" value ="sin_gluten" class="form-check-input">
+                <label for="sin gluten">Sin gluten</label>
 
-            <input type ="checkbox" id="sin_preferencias" name="preferencia_comida[]" value="sin_preferencias" class="form-check-input">
-            <label for="sin preferencias">Sin preferencias</label>
+                <input type ="checkbox" id="sin_preferencias" name="preferencia_comida[]" value="sin_preferencias" class="form-check-input">
+                <label for="sin preferencias">Sin preferencias</label>
             </div>
         </div>
 
+
+        <!-- SECCIÓN 3: INFORMACIÓN DE ACCESO -->
         <div class = "Acceso">
             <h2>Información de Acceso</h2>
+            <!-- Campo de NOMBRE DE USUARIO (opcional) -->
             <div class="mb-3">
                 <label for ="Nombre de Usuario" class="form-label">Nombre de Usuario:</label>
+                <!-- NO tiene required: Es opcional -->
                 <input type ="text" id ="nombre_usuario" name ="nombre_usuario" class="form-control">
             </div>
-            <br><br>
 
+            <!-- Campo de CONTRASEÑA (obligatorio) -->
             <div class="mb-3">
                 <label for ="Contraseña" class="form-label">Contraseña:</label>
+                <!-- type="password": Los caracteres se ocultan al escribir
+                     required: Campo obligatorio
+                     minlength="6": Mínimo 6 caracteres (el navegador valida esto) -->
                 <input type = "password" id="contrasena" name ="contrasena" class="form-control" required minlength="6">
                 <div class="invalid-feedback">La contraseña es obligatoria y debe tener 6 o más caracteres.</div>
             </div>
-            <br><br>
+
+            <!-- Campo de CONFIRMAR CONTRASEÑA (obligatorio) -->
             <div class="mb-3">
                 <label for ="confirmar_contrasena" class="form-label">Confirmar contraseña:</label>
+                <!-- required: Obligatorio
+                     NOTA: La coincidencia con 'contrasena' se valida en el script JS abajo -->
                 <input type ="password" id="confirmar_contrasena" name="confirmar_contrasena" class="form-control" required>
                 <div class="invalid-feedback">Las contraseñas no coinciden.</div>
             </div>
         </div>
 
+
+        <!-- SECCIÓN 4: PREFERENCIA DE CONTACTO -->
         <div class = "Contacto">
             <h2>Preferencia de Contacto</h2>
             <div class="form-check">
+                <!-- Checkbox para NOTIFICACIONES (opcional) -->
                 <input class ="form-check-input" type="checkbox" id ="notificaciones" name="notificaciones" value ="si">
                 <label class="form-check-label" for="notificaciones">¿Desea recibir notificaciones por correo electrónico?</label>
 
+                <!-- Checkbox para TÉRMINOS Y CONDICIONES (obligatorio) -->
                 <br><input class="form-check-input" type="checkbox" id="terminos" name="terminos" value="aceptar" required>
                 <label class ="form-check-label" for="terminos">¿Acepta los términos y condiciones?</label>
+                <!-- d-block: Para mostrar el mensaje en nueva línea -->
                 <div class="invalid-feedback d-block">Debe aceptar los términos y condiciones para continuar.</div>
             </div>
         </div>
+        
+        <!-- SECCIÓN 5: ENCUESTA ADICIONAL -->
         <div class ="Adicional">
             <h2>Encuesta Adicional</h2>
+            <!-- Campo de CALIFICACIÓN (slider/rango) -->
             <label for ="Calificación de eventos anteriores" class="form-label">Calificación de eventos anteriores:</label>
+            <!-- type="range": Deslizador de 1 a 10
+                 class="form-range": Estilo Bootstrap para sliders -->
             <input type="range" id="calificacion_eventos" name="calificacion_eventos" min="1" max="10" class="form-range">
-            <br><br>
 
+            <!-- Campo de COMENTARIOS (área de texto) -->
             <label for ="Comentarios adicionales" class="form-label">Comentarios adicionales:</label>
+            <!-- <textarea>: Área para textos largos de múltiples líneas
+                 rows="4": Altura de 4 líneas
+                 class="form-control": Estilo Bootstrap -->
             <textarea id="comentarios_adicionales" name="comentarios_adicionales" rows="4" class="form-control"></textarea>
         </div>
         </div>
 
+            <!-- SECCIÓN 6: ADJUNCIÓN DE ARCHIVOS -->
             <div class="Archivo mb-3">
             <h2>Adjunción de archivos</h2>
+            <!-- type="file": Input para subir archivos
+                 class="form-control": Estilo Bootstrap -->
             <input type="file" id="archivo" name="archivo" class="form-control">
 
         </div>
+        <!-- BOTÓN DE ENVÍO -->
+        <!-- type="submit": Envía el formulario cuando se hace click
+             class="btn btn-primary": Estilo de botón Bootstrap (azul principal) -->
         <button type="submit" class="btn btn-primary">Enviar</button>
+        <!-- Cierre del FORM -->
         </form>
+        <!-- Cierre del contenedor principal -->
         </div>
 
-        <!-- Bootstrap JS (optional) + client-side validation script -->
+        <!-- SCRIPTS Y VALIDACIÓN DEL CLIENTE -->
+        <!-- Carga Bootstrap JavaScript (incluye Popper para dropdowns/tooltips) -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- Script CUSTOM para validación de formulario -->
         <script>
+        /* IIFE (Immediately Invoked Function Expression):
+           Una función que se ejecuta inmediatamente. El patrón (() => { ... })() 
+           mantiene variables locales sin contaminar el scope global. */
         (function () {
             'use strict'
+            /* 'use strict': Modo estricto de JavaScript. Detecta errores comunes y evita
+               comportamientos "inseguros". Ejemplos: no permite variables sin declarar. */
 
+            /* document.querySelectorAll('.needs-validation'): 
+               Busca TODOS los elementos con clase 'needs-validation' en la página.
+               Devuelve una NodeList (similar a array). */
             var forms = document.querySelectorAll('.needs-validation')
 
+            /* Array.prototype.slice.call(forms):
+               Convierte la NodeList en un array real para poder usar .forEach()
+               (antiguamente NodeList no tenía .forEach, ahora sí lo tiene en navegadores modernos) */
             Array.prototype.slice.call(forms)
+                /* .forEach(function (form) { ... }):
+                   Para CADA formulario en la página, ejecuta la función */
                 .forEach(function (form) {
+                    /* form.addEventListener('submit', function (event) { ... }):
+                       Escucha el evento "submit" (cuando el usuario presiona el botón Enviar)
+                       event = objeto que contiene información del evento */
                     form.addEventListener('submit', function (event) {
+                        /* Obtiene referencias a los inputs de contraseña */
                         var pass = document.getElementById('contrasena');
                         var confirm = document.getElementById('confirmar_contrasena');
+                        
+                        /* VALIDACIÓN CUSTOM: Revisa que las contraseñas coincidan
+                           Si NO coinciden: asigna un mensaje de error custom
+                           Si SÍ coinciden: limpia el mensaje (asigna string vacío) */
                         if (pass.value !== confirm.value) {
                             confirm.setCustomValidity('Las contraseñas no coinciden');
                         } else {
                             confirm.setCustomValidity('');
                         }
 
+                        /* form.checkValidity(): 
+                           Retorna true si form cumple todas las validaciones (required, type, minlength, etc.)
+                           Retorna false si falla alguna validación */
                         if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
+                            /* Si hay errores de validación: */
+                            event.preventDefault()  /* Evita envío del form al servidor */
+                            event.stopPropagation() /* Detiene propagación de eventos */
                         }
 
+                        /* form.classList.add('was-validated'):
+                           Añade la clase 'was-validated' al formulario.
+                           Bootstrap usa esto para aplicar estilos visuales a campos inválidos:
+                           - Campos con error muestran border rojo (is-invalid)
+                           - Mensajes invalid-feedback se muestran (d-block) */
                         form.classList.add('was-validated')
                     }, false)
+                    /* false: Indica que el listener se ejecuta en fase de "bubbling" (no "capture") */
                 })
         })()
+        /* Fin de la IIFE */
         </script>
     </body>
 </html>
